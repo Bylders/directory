@@ -1,9 +1,8 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is teh readmez. You won't find anythin' helpful here, bruh.
 
-Things you may want to cover:
+Things we wanted to cover but unfortunately could not:
 
 * Ruby version
 
@@ -11,18 +10,6 @@ Things you may want to cover:
 
 * Configuration
 
-* Database creation
+* All the above aren't enought for yah, broder? You want more, eh? 
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Hehe, this is teh endzz, see ya next later.
