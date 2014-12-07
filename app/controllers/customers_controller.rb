@@ -5,7 +5,11 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.all
+    if params[:search]
+    @customers = Customer.search(params[:search]).order("created_at DESC")
+  else
+    @customers = Customer.all.order('created_at DESC')
+  end
   end
 
   # GET /customers/1
