@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  resources :menus
+
   resources :searches
   resources :customers
 
+  get 'menu/index' 
   get 'home/index'
   devise_for :users do
     get '/users/sign_out' => 'devise/sessions#destroy'

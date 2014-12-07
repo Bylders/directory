@@ -10,10 +10,25 @@ class Search < ActiveRecord::Base
 		Customer.where(conditions)
 	end
 
+	def name_conditions
+		["customers.name LIKE ?", "%#{name}%"] unless name.blank?
+	end
+
+	def email_conditions
+		["customers.email LIKE ?", "%#{email}%"] unless email.blank?
+	end
+
+	def address_conditions
+		["customers.address LIKE ?", "%#{address}%"] unless address.blank?
+	end
+
 	def mobile_conditions
 		["customers.mobile LIKE ?", "%#{mobile}%"] unless mobile.blank?
 	end
 
+	def landline_conditions
+		["customers.landline LIKE ?", "%#{landline}%"] unless landline.blank?
+	end
 
 	def conditions
 		[conditions_clauses.join(' OR '), *conditions_options]
