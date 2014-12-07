@@ -6,7 +6,12 @@ class CustomersController < ApplicationController
   # GET /customers.json
   def index
     if params[:search]
-    @customers = Customer.search(params[:search]).order("created_at DESC")
+      if Customer.search(params[:search]).exists?
+        @customers = Customer.search(params[:search]).order("created_at DESC")
+      else
+        @new_customer = current_user.customers.create(mobile: params[:search])
+        redirect_to @new_customer
+      end
   else
     @customers = Customer.all.order('created_at DESC')
   end
