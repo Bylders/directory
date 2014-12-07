@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   # GET /customers
@@ -24,7 +25,8 @@ class CustomersController < ApplicationController
   # POST /customers
   # POST /customers.json
   def create
-    @customer = Customer.new(customer_params)
+    # @customer = Customer.new(customer_params)
+    @customer =  current_user.customers.new(customer_params)
 
     respond_to do |format|
       if @customer.save
