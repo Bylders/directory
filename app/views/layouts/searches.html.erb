@@ -45,23 +45,30 @@
             <span class="icon-bar"></span>
           </button>
           <%= link_to "Home", home_index_path, class: "navbar-brand" %>
+          <% if user_signed_in? %>
           <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
-              <li><%= link_to "Customers", "/customers"  %></li>
-              <li><%= link_to "Search", new_search_path  %></li>
-            </ul>
-          </div>
+             <li><%= link_to "Customers", "/customers"  %></li>
+             <li><%= link_to "Search", new_search_path  %></li>
+           </ul>
+           <ul class="nav navbar-right navbar-nav">
+            <li><%= current_user.email %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>            
+          </ul>
+          <% end %>
+
         </div>
       </div>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-9">
-            <!-- <%= bootstrap_flash %> -->
-            <%= yield %>
-          </div>
+    </div>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <!-- <%= bootstrap_flash %> -->
+          <%= yield %>
         </div>
+      </div>
 
-      </body>
-      </html>
+    </body>
+    </html>

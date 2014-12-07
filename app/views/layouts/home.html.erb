@@ -46,47 +46,51 @@
             <span class="icon-bar"></span>
           </button>
           <%= link_to "Home", home_index_path, class: "navbar-brand" %>
+          <% if user_signed_in? %>
           <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
-              <li><%= link_to "Customers", "/customers"  %></li>
-              <li><%= link_to "Search", new_search_path  %></li>
-            </ul>
-            <ul class="nav navbar-right">
-            <li><%= link_to current_user.email, current_user.customers[0]  %></li>
-            </ul>
-          </div>
+             <li><%= link_to "Customers", "/customers"  %></li>
+             <li><%= link_to "Search", new_search_path  %></li>
+           </ul>
+           <ul class="nav navbar-right navbar-nav">
+            <li><%= current_user.email %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>            
+          </ul>
+          <% end %>
+
         </div>
       </div>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-9">
-            <!-- <%= bootstrap_flash %> -->
-            <%= yield %>
-          </div>
-          <div class="col-lg-3">
-            <div class="well sidebar-nav">
-              <h3>Sidebar</h3>
-              <ul class="nav nav-list">
-                <li class="nav-header">Some loremzz and ipsamesz</li>
-                <li>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </li>
-              </ul>
-            </div><!--/.well -->
-          </div><!--/span-->
-        </div><!--/row-->
+    </div>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <!-- <%= bootstrap_flash %> -->
+          <%= yield %>
+        </div>
+        <div class="col-lg-3">
+          <div class="well sidebar-nav">
+            <h3>Sidebar</h3>
+            <ul class="nav nav-list">
+              <li class="nav-header">Some loremzz and ipsamesz</li>
+              <li>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+      </div><!--/row-->
 
-        <footer>
-          <p>&copy; The Bruz Company, 3000</p>
-        </footer>
+      <footer>
+        <p>&copy; The Bruz Company, 3000</p>
+      </footer>
 
-      </div> <!-- /container -->
+    </div> <!-- /container -->
 
-    </body>
-    </html>
+  </body>
+  </html>
