@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :customers
 
   get 'menu/index' 
-  get 'home/index'
+  get 'home/index' => 'home#index', :as => :index_home 
   devise_for :users do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
