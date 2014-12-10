@@ -14,8 +14,13 @@
   <dd><%= @customer.mobile %></dd>
   <dt><strong><%= model_class.human_attribute_name(:landline) %>:</strong></dt>
   <dd><%= @customer.landline %></dd>
+  <% @customer.orders.each do |l| %>
+<h4> ORDER </h4>
+<%= l.prod_id %>
+<% end %>
 </dl>
-<%= @customer.id %>
+</br>
+</br>
 <%= link_to 'Place Order', go_customers_path(:id => @customer.id) %>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
