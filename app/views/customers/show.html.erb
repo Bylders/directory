@@ -14,17 +14,24 @@
   <dd><%= @customer.mobile %></dd>
   <dt><strong><%= model_class.human_attribute_name(:landline) %>:</strong></dt>
   <dd><%= @customer.landline %></dd>
-  <% @customer.orders.each do |l| %>
+  <% if @customer and @customer.orders %>
+  <%  @customer.orders.each do |l| %>
+  <%= l.prod_id %>
 <h4> ORDER </h4>
+<% if (l.prod_id) %>
 <%= l.prod_id.split(' ').each do |item| %>
+<h1> <%= menu.where("id like ?", "%#{item}%").name %></h1>
+<% end %>
 <h4> item </h4>
 <p> 
+<% end %>
 <% end %>
 <% end %>
 </dl>
 </br>
 </br>
-<%= link_to 'Place Order', go_customers_path(:id => @customer.id) %>
+<%= link_to 'Place Order', customers_path(:id => @customer.id) %>
+<%= button_to 'Place Order', orders_path(:id => @customer.id) %>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               customers_path, :class => 'btn btn-default'  %>
