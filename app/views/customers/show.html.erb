@@ -16,7 +16,8 @@
   <dd><%= @customer.landline %></dd>
   <% @customer.orders.each do |l| %>
 <h4> ORDER </h4>
-<%= l.prod_id.split('').each do |item| %>
+<%= l.prod_id.split(' ').each do |item| %>
+<h4> item </h4>
 <p> 
 <% end %>
 <% end %>

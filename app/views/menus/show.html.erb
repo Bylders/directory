@@ -1,19 +1,25 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Menu -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @menu.name %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @menu.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:tpe) %>:</strong></dt>
+  <dd><%= @menu.tpe %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>
+  <dd><%= @menu.price %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:order_id) %>:</strong></dt>
+  <dd><%= @menu.order_id %></dd>
+</dl>
 
-<p>
-  <strong>Type:</strong>
-  <%= @menu.tpe %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @menu.price %>
-</p>
-
-<%= link_to 'Edit', edit_menu_path(@menu) %> |
-<%= link_to 'Back', menus_path %>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              menus_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_menu_path(@menu), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              menu_path(@menu),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
