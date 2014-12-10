@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  resources :orders
+
   resources :menus
 
   resources :searches
   resources :customers
-
+  get 'orders/:id/aditem' => 'orders#aditem', :as => :aditem_orders
+  get 'customers/:id/go' => 'customers#go', :as =>:go_customers
   get 'menu/index' 
   get 'home/index' => 'home#index', :as => :index_home 
   devise_for :users do

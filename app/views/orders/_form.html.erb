@@ -1,0 +1,24 @@
+<%= @order.id %>
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% @food.each do |cfood| %>
+  <%= cfood.name %>
+<%= cfood.id %>
+<%= link_to 'Add to Order', aditem_orders_path(:id => @order.id, :f_id => cfood.id) %>
+  
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

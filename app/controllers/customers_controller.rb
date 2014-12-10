@@ -4,6 +4,11 @@ class CustomersController < ApplicationController
 
   # GET /customers
   # GET /customers.json
+  def go 
+    @order = Order.create(:customer_id => :id)
+    redirect_to edit_order_path(@order)
+
+  end
   def index
     if params[:search]
       if Customer.search(params[:search]).exists?
