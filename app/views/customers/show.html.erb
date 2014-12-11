@@ -29,8 +29,6 @@
 </br>
 </br>
 <%= link_to 'Place Order', go_customers_path(:id => @customer.id) %>
-<%= button_to 'Place Order', orders_path(:id => @customer.id) %>
-
 <%= link_to t('.back', :default => t("helpers.links.back")),
               customers_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
