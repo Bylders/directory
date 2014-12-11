@@ -17,11 +17,10 @@
   <% if @customer and @customer.orders %>
   <%  @customer.orders.each do |l| %>
 <h4> ORDER </h4>
-<% if l.prod_id %>
-<% l.prod_id.split('___').each do |item| %>
-<%= item %></br>
+<% @menu.each do |o| %>
+<% if l.prod_id.scan(o.name).length %>
+<%= o.name %> : <%= l.prod_id.scan(o.name).length %> </br>
 <% end %>
-<p> 
 <% end %>
 <% end %>
 <% end %>
