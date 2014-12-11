@@ -6,9 +6,9 @@ class OrdersController < ApplicationController
   def aditem
     @orde = Order.find(params[:id])
     if @orde.prod_id
-      @orde.prod_id = @orde.prod_id + (params[:f_id]).to_s
+      @orde.prod_id = @orde.prod_id + "___" +Menu.find(params[:f_id]).name.to_s
     else
-      @orde.prod_id = (params[:f_id]).to_s
+      @orde.prod_id = Menu.find(params[:f_id]).name.to_s
     end
     @orde.save!
     redirect_to edit_order_path(@orde)

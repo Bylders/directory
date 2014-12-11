@@ -26,6 +26,7 @@ class CustomersController < ApplicationController
   # GET /customers/1.json
   def show
     @f = Customer.find(params[:id]).orders
+    @menu = Menu.all
   end
 
   # GET /customers/new
