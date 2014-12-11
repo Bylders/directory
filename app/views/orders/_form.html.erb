@@ -1,4 +1,3 @@
-<%= @order.id %>
 <%= form_for(@order) do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
@@ -15,10 +14,8 @@
   <%= cfood.name %>
 <%= cfood.id %>
 <%= link_to 'Add to Order', aditem_orders_path(:id => @order.id, :f_id => cfood.id) %>
-  
+ </br> 
   <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= link_to 'Confirm Order', @customer %>
 <% end %>

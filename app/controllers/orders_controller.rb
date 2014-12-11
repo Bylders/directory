@@ -32,6 +32,7 @@ class OrdersController < ApplicationController
   def edit
     @food = Menu.all
     @order = Order.find(params[:id])
+    @customer = Customer.find(@order.customer_id)
   end
 
   # POST /orders
