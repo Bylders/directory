@@ -15,6 +15,8 @@
   <dt><strong><%= model_class.human_attribute_name(:landline) %>:</strong></dt>
   <dd><%= @customer.landline %></dd>
 </dl>
+<%= @customer.id %>
+<%= link_to 'Place Order', go_customers_path(:id => @customer.id) %>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               customers_path, :class => 'btn btn-default'  %>
@@ -25,3 +27,4 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
+

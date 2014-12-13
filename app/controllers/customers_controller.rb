@@ -4,13 +4,18 @@ class CustomersController < ApplicationController
 
   # GET /customers
   # GET /customers.json
+  def go 
+    @order = Order.create(:customer_id => :id)
+    redirect_to edit_order_path(@order)
+
+  end
   def index
     if params[:search]
       if Customer.search(params[:search]).exists?
         @customers = Customer.search(params[:search]).order("created_at DESC")
       else
         @new_customer = current_user.customers.create(mobile: params[:search])
-        redirect_to @new_customer
+        redirect_to edit_customer_path(@new_customer)
       end
   else
     @customers = Customer.all.order('created_at DESC')
