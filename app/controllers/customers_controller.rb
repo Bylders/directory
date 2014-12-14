@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def go 
-    @order = Order.create(:customer_id => :id)
+    @order = Order.create(:customer_id => params[:id])
     redirect_to edit_order_path(@order)
 
   end
@@ -25,6 +25,8 @@ class CustomersController < ApplicationController
   # GET /customers/1
   # GET /customers/1.json
   def show
+    @f = Customer.find(params[:id]).orders
+    @menu = Menu.all
   end
 
   # GET /customers/new

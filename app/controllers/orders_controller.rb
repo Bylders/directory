@@ -5,9 +5,13 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def aditem
     @orde = Order.find(params[:id])
-    @orde.product_id = params[:f_id]
+    if @orde.prod_id
+      @orde.prod_id = @orde.prod_id + "___" +Menu.find(params[:f_id]).name.to_s
+    else
+      @orde.prod_id = Menu.find(params[:f_id]).name.to_s
+    end
     @orde.save!
-    redirect_to @orde
+    redirect_to edit_order_path(@orde)
   end
   def index
     @orders = Order.all
@@ -28,6 +32,7 @@ class OrdersController < ApplicationController
   def edit
     @food = Menu.all
     @order = Order.find(params[:id])
+    @customer = Customer.find(@order.customer_id)
   end
 
   # POST /orders
@@ -79,6 +84,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:customer_id, :product_id)
+      #params.require(:order).permit(:customer_id, :product_id, :prod_id)
     end
 end
